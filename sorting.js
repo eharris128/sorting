@@ -12,7 +12,7 @@ function swap(array, i, j) {
 
 function bubbleSort(array) {
   let swaps = 0;
-  for (let i=0; i<array.length - 1; i++) {
+  for (let i = 0; i < array.length - 1; i++) {
     if (array[i] > array[i + 1]) {
       swap(array, i, i + 1);
       swaps++;
@@ -56,14 +56,40 @@ function merge(left, right, array) {
     }
   }
 
-  for (let i=leftIndex; i<left.length; i++) {
+  for (let i = leftIndex; i < left.length; i++) {
     array[outputIndex++] = left[i];
   }
 
-  for (let i=rightIndex; i<right.length; i++) {
+  for (let i = rightIndex; i < right.length; i++) {
     array[outputIndex++] = right[i];
   }
   return array;
 }
 
-console.log(mergeSort(array));
+// console.log(mergeSort(array));
+
+
+function quickSort(array, start = 0, end = array.length) {
+  start = start;
+  end = end;
+  if (start >= end) {
+    return array;
+  }
+  const middle = partition(array, start, end);
+  array = quickSort(array, start, middle);
+  array = quickSort(array, middle + 1, end);
+  return array;
+};
+
+function partition(array, start, end) {
+  const pivot = array[end - 1];
+  let j = start;
+  for (let i = start; i < end - 1; i++) {
+    if (array[i] <= pivot) {
+      swap(array, i, j);
+      j++;
+    }
+  }
+  swap(array, end - 1, j);
+  return j;
+};
