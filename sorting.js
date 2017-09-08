@@ -68,7 +68,6 @@ function merge(left, right, array) {
 
 // console.log(mergeSort(array));
 
-
 function quickSort(array, start = 0, end = array.length) {
   start = start;
   end = end;
@@ -93,3 +92,7 @@ function partition(array, start, end) {
   swap(array, end - 1, j);
   return j;
 };
+// the array is at the top
+// swap function is at line 5
+
+quickSort(array);
